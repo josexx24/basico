@@ -23,7 +23,61 @@ void mostrar2(int*array,int p,int n)
   }
   printf("\n");
 }
-void merge(int*array,int p,int q,int r)// 
+void merge2(int*array,int p,int q,int r)
+{
+  int n1,n2,i,j,k;
+  n1=q-p+1;
+  n2=r-q;
+  int *L=(int*) calloc(n1,sizeof(int));
+  int *R=(int*) calloc(n2,sizeof(int));
+  for(i=0;i<n1;i++)
+  {
+	  L[i]=array[p+i];
+  }
+  for(j=0;j<n2;j++)
+  {
+	  R[j]=array[q+j+1];
+  }
+  i=0;
+  j=0;
+  k=p;
+  while(i<n1 && j<n2)
+  {
+    if(L[i]<=R[j])
+    {
+      array[k]=L[i];
+      i++;
+    }
+    else
+    {
+      array[k]=R[j];
+      j++;
+    }
+    k++;
+  }
+  if(i==n1)
+  {
+    while(j<n2)
+    {
+      array[k]=R[j];
+      j++;
+      k++;
+    }
+  }
+  else
+  {
+    while(i<n1)
+    {
+      array[k]=L[i];
+      i++;
+      k++;
+    }
+  }
+  free(L);
+  free(R);
+
+}
+void merge2(int*array,int p,int q,int r)// 
 {
   int n1,n2,i,j,k;
   n1=q-p+1;
@@ -66,7 +120,7 @@ void merge_sort(int*array,int p,int r)
 		int q=(p+r)/2;
 		merge_sort(array,p,q);
 		merge_sort(array,q+1,r);
-		merge(array,p,q,r);
+		merge2(array,p,q,r);
 	}
 }
 void inicializar(int*array,int n)
