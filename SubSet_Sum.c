@@ -196,7 +196,7 @@ int main(int argc,char*argv[])
 		sss=subset_sum(array,n,v);
 		if(!sss)
 		{
-			printf("\n El numero %d no tiene 2 elementos cuya suma este en el arreglo \n",v);
+			printf("\n El numero %d no tiene 2 elementos en el arreglo cuya suma es igual a %d \n",v);
 		}
 		else
 		{
